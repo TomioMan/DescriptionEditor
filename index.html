@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="hide-scrollbar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TomioMan's JanitorAI thing!</title>
+    <link rel="stylesheet" href="style.css">
+        <!-- AOS CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+</head>
+<body>
+    <div id="blackWall" class="hidden">
+
+    </div>
+    <div id="burgerMenu">
+        <div>
+            <div class="to_home_graphic" style="padding-top: 10px;">
+                <button id="burgerMenuButton2" >
+                    <div></div> <div></div> <div></div>
+                </button>
+            </div>
+        </div>
+    </div>
+    <nav>
+        <div class="to_home_graphic">
+            <button id="burgerMenuButton">
+                <div></div> <div></div> <div></div>
+            </button>
+        </div>
+    </nav>
+    <main>
+        <header>
+            <div class="inner">
+                <div>
+                    <p>DESCRIPTION</p>
+                    <p>EDITOR by</p>
+                    <h1>TOMIOMAN</h1>
+                    <p>Creator of:</p>
+                    <p id="headerQuote">Foodbased Creatures</p>
+                </div>
+            </div>
+        </header>
+        <div class="welcome">
+
+        </div>
+        <div class="description" style="min-height: 150vh;">
+                <!-- Header -->
+            <div class="section">
+                <h1>Example Header one</h1>
+                <p>This is the only text that will show up when someone who hasn't opened it yet will see.</p>
+                <p>It is important to note that this text is very important, and isnt just for putting funny stuff into it <br>
+                The first impression is made by what the users sees here, and determines whether they'll click on it or not, dont put random shit here</p>
+                <div class="textarea_div gradient_border">
+                    <textarea id="headerInput" placeholder=". . ." class="header" oninput="autoGrow(this), updateExample('header')"></textarea>
+                </div>
+                <button class="eye_button" id="headerExampleButton">👁<div class="Cross"></div></button>
+                <div id="headerExample" class="textarea_example">
+                    <span>. . .</span>
+                </div>
+            </div>
+                <!-- Basic Info -->
+            <div class="section">
+                <h1>Info Header one</h1>
+                <p></p>
+                <div class="textarea_div">
+                    <div class="">
+
+                    </div>
+                </div>
+                <button class="eye_button" id="infoExampleButton">👁 <div class="Cross"></div></button>
+                <div id="infoExample" class="textarea_example">
+                    <span>. . .</span>
+                </div>
+            </div>
+        </div>
+    </main>
+        <!-- AOS JavaScript -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
