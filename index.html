@@ -36,17 +36,24 @@
                     <p>EDITOR by</p>
                     <h1>TOMIOMAN</h1>
                     <p>Creator of:</p>
-                    <p id="headerQuote">Foodbased Creatures</p>
+                    <div id="headerQuote">
+                        <p></p>
+                        <p></p>
+                    </div>
                 </div>
             </div>
         </header>
-        <div class="welcome">
-
-        </div>
-        <div class="description" style="min-height: 150vh;">
+        <div class="description" style="min-height: 250vh;">
+                <!-- Welcome -->
+            <div class="welcome">
+                <h1>♡ Welcome Dearest ♡</h1>
+                <p>Hi, I call myself Tomio, and welcome to a little site I made!</p>
+                <p>This project has been in my mind for as long as I've been making my descriptions of a similar format, first beginning as a Python program you can view right <a href="">HERE!</a>, and eventually sprouting into this site.</p>
+                <p>Here, you not only can find this tool I made, but more about me, my OCs, some updates about bots, and overall some more info about me on janitorAI if you really care. This site may take a form of a blog of some sort, we'll see!</p>
+            </div>
                 <!-- Header -->
-            <div class="section">
-                <h1>Example Header one</h1>
+            <div class="section" data-aos="fade-up">
+                <h1>Header</h1>
                 <p>This is the only text that will show up when someone who hasn't opened it yet will see.</p>
                 <p>It is important to note that this text is very important, and isnt just for putting funny stuff into it <br>
                 The first impression is made by what the users sees here, and determines whether they'll click on it or not, dont put random shit here</p>
@@ -60,13 +67,35 @@
             </div>
                 <!-- Basic Info -->
             <div class="section">
-                <h1>Info Header one</h1>
-                <p></p>
-                <div class="textarea_div">
-                    <div class="">
-
+                <h1>Basic Info</h1>
+                <p>This section is kinda annoying, since you have to get specific and write the exact numbers of the chracter depicted in the bot, and this section is completely useless on multiple character bots so... um... heh... doesnt matter baka! >_<</p>
+                <p>I have a trouble with like, imagining things, I have trouble enjoying tentacle bots or bots with character that are like really tall, since I never felt / experienced something like that, so um... yeah!</p>
+                <div class="info_section">
+                    <p>Name:</p>
+                    <div class="textarea_div gradient_border">
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
                     </div>
                 </div>
+                <div class="info_section">
+                    <p>Height:</p>
+                    <div class="textarea_div gradient_border">
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
+                    </div>
+                </div>
+                <div class="info_section">
+                    <p>Weight:</p>
+                    <div class="textarea_div gradient_border">
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
+                    </div>
+                </div>
+                <div class="info_section">
+                    <p>Gender <br>/Species:</p>
+                    <div class="textarea_div gradient_border">
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
+                    </div>
+                </div>
+                <button id="createNewSection">+</button>
+                
                 <button class="eye_button" id="infoExampleButton">👁 <div class="Cross"></div></button>
                 <div id="infoExample" class="textarea_example">
                     <span>. . .</span>
