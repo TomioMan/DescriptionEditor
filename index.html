@@ -19,6 +19,10 @@
                     <div></div> <div></div> <div></div>
                 </button>
             </div>
+            <div class="burgerMenu_links">
+                <a href="">Guide for the editor</a>
+                <a href="">Blog</a>
+            </div>
         </div>
     </div>
     <nav>
@@ -77,25 +81,25 @@
                     </div>
                 </div>
                 <div class="info_section">
-                    <p>Height:</p>
+                    <p>Age: </p>
                     <div class="textarea_div gradient_border">
-                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()" inputmode="numeric"></textarea>
                     </div>
                 </div>
                 <div class="info_section">
-                    <p>Weight:</p>
+                    <p>Height: <br><span>metric units</span></p>
                     <div class="textarea_div gradient_border">
-                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()" inputmode="numeric"></textarea>
                     </div>
                 </div>
                 <div class="info_section">
-                    <p>Gender <br>/Species:</p>
+                    <p>Weight: <br><span>metric units</span></p>
                     <div class="textarea_div gradient_border">
-                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()"></textarea>
+                        <textarea placeholder=". . ." oninput="autoGrow(this), updateInfo()" inputmode="numeric"></textarea>
                     </div>
                 </div>
                 <button id="createNewSection">+</button>
-                
+
                 <button class="eye_button" id="infoExampleButton">👁 <div class="Cross"></div></button>
                 <div id="infoExample" class="textarea_example">
                     <span>. . .</span>

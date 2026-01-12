@@ -112,7 +112,7 @@ window.addEventListener('scroll', () => {
     }
 
     const welcome = document.querySelector(".welcome");
-    if (window.scrollY >= 100 && window.scrollY <= 180) {
+    if (window.scrollY >= 100 && window.scrollY <= 195) {
         welcome.style.width = "95vw"
         welcome.style.boxShadow = "0px 0px 100px 10px #fface8be inset"
     } else {
@@ -125,7 +125,7 @@ window.addEventListener('scroll', () => {
 
 function autoGrow(el) {
     el.style.height = "auto";
-    el.style.height = (el.scrollHeight - 15) + "px";
+    el.style.height = (el.scrollHeight - 10) + "px";
 }
 
 const headerExampleButton = document.getElementById("headerExampleButton");
@@ -166,15 +166,23 @@ let italic2 = `</span>`
 let strong1 = `<span style='color: #fface8;'><strong>`
 let strong2 = `</strong></span>`
 
+function styleText(text) {
+    let finalText = text;
+
+    finalText = finalText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    finalText = finalText.replace(/\*\*(.+?)\*\*/g, `${strong1}$1${strong2}`);
+    finalText = finalText.replace(/\*(.+?)\*/g, `${italic1}$1${italic2}`);
+
+    return finalText;
+}
+
 function updateExample(section) {
     const text = document.getElementById(`${section}Input`).value
     const output = document.getElementById(`${section}Example`).querySelector("span")
 
     let finalText = text;
 
-    finalText = finalText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    finalText = finalText.replace(/\*\*(.+?)\*\*/g, `${strong1}$1${strong2}`);
-    finalText = finalText.replace(/\*(.+?)\*/g, `${italic1}$1${italic2}`);
+    finalText = styleText(finalText);
 
     output.innerHTML = finalText
     if (finalText.trim() === "") {
@@ -184,30 +192,51 @@ function updateExample(section) {
 
 function updateInfo() {
     const sections = document.querySelectorAll(".info_section");
+    const output = document.getElementById(`infoExample`).querySelector("span")
     let finalText = ""
 
     sections.forEach((section) => {
-        const pText = section.querySelector("p").textContent;
-        const inputText = section.querySelector("textarea").value;
+        let inputText = ""
+        
+        if (!section.querySelector("p")) {
+            let input = section.querySelector("input").value;
+            inputText = input;
+        } else {
+            let input = section.querySelector("p").textContent;
+            input = input.replace(/\n/g, " ").trim().replace(/:/g, "").replace(/metric units/g, "").trim();
+            inputText = input;
+        }
+        let areaText = section.querySelector("textarea").value;
+        
+        finalText += `<p>${inputText}: **${areaText}**</p>`;
+        
+        finalText = finalText.replace(/\*\*(.+?)\*\*/g, `${strong1}$1${strong2}`);
+        finalText = finalText.replace(/\*(.+?)\*/g, `${italic1}$1${italic2}`);
+
+        output.innerHTML = finalText;
+        if (finalText.trim() === "") {
+            output.innerHTML = ". . ."
+        }
     });
 }
 
 const button = document.getElementById("createNewSection");
 
 button.addEventListener("click", () => {
-    // section wrapper
     const section = document.createElement("div");
     section.classList.add("info_section");
 
-    // label
-    const label = document.createElement("p");
-    label.textContent = "Custom:";
+    const labelInput = document.createElement("input");
+    labelInput.type = "text";
+    labelInput.placeholder = "placeholder";
+    labelInput.classList.add("info_custom_input");
+    labelInput.oninput = function () {
+        updateInfo();
+    };
 
-    // textarea wrapper
     const textareaDiv = document.createElement("div");
     textareaDiv.classList.add("textarea_div", "gradient_border");
 
-    // textarea
     const textarea = document.createElement("textarea");
     textarea.placeholder = ". . .";
     textarea.oninput = function () {
@@ -215,24 +244,32 @@ button.addEventListener("click", () => {
         updateInfo();
     };
 
-    // delete button
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "✕";
     deleteBtn.classList.add("delete_section");
+    deleteBtn.onclick = function () {
+        section.style.opacity = "0";
+        section.style.transform = "scaleY(0)";
+        setTimeout(() => {
+            section.remove();
+            updateInfo();
+        }, 500);
+    };
 
-    deleteBtn.addEventListener("click", () => {
-        section.remove();
-        updateInfo();
-    });
-
-    // assemble
     textareaDiv.appendChild(textarea);
-    section.appendChild(label);
+    section.appendChild(labelInput);
     section.appendChild(textareaDiv);
     section.appendChild(deleteBtn);
 
-    // insert before add button
-    
     button.parentNode.insertBefore(section, button);
+
+    section.style.opacity = "0";
+    section.style.transform = "scaleY(0)";
+    setTimeout(() => {
+        section.style.opacity = "1";
+        section.style.transform = "scaleY(1)";
+    }, 1);
+
+    updateInfo();
 });
 
